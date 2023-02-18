@@ -24,6 +24,25 @@ namespace Services
             gameObject.SetActive(true);
         }
 
+        public CoinView GetClosest(Vector3 point)
+        {
+            var minDistance = Mathf.Infinity;
+            CoinView closestCoin = null;
+            
+            foreach (var coin in _coins)
+            {
+                var distance = Vector3.Distance(coin.transform.position, point);
+
+                if (distance < minDistance)
+                {
+                    minDistance = distance;
+                    closestCoin = coin;
+                }
+            }
+
+            return closestCoin;
+        }
+
         private void OnCoinDestroy(CoinView coin)
         {
             _collectedCoinsCount++;
