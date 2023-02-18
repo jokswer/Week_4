@@ -6,6 +6,7 @@ namespace Services
 {
     public class SpawnService : MonoBehaviour
     {
+        [SerializeField] private CoinView _lastCoin;
         [SerializeField] private CoinService _coinService;
 
         [SerializeField] private Transform _creationZone;
@@ -18,6 +19,7 @@ namespace Services
         private void Awake()
         {
             var coinsList = new List<CoinView>();
+            coinsList.Add(_lastCoin);
 
             for (var i = 0; i < _coinsCount; i++)
             {
