@@ -8,6 +8,7 @@ namespace Services
     public class CoinService : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _scoreText;
+        [SerializeField] private CoinAudio _coinAudio;
 
         private int _coinsCount;
         private int _collectedCoinsCount;
@@ -47,6 +48,7 @@ namespace Services
 
         private void OnCoinDestroy(CoinView coin)
         {
+            _coinAudio.PlayCollectCoin();
             _collectedCoinsCount++;
             _coins.Remove(coin);
 

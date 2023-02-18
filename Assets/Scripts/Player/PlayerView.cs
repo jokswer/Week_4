@@ -7,10 +7,12 @@ namespace Player
     public class PlayerView : MonoBehaviour
     {
         [SerializeField] private Transform _cameraCenter;
+
         private Rigidbody _rigidbody;
         private List<Vector3> _velocityList = new List<Vector3>();
 
         public Vector3 Position => transform.position;
+        public float VelocityMagnitude => _rigidbody.velocity.magnitude;
 
         private void Start()
         {

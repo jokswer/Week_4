@@ -3,8 +3,9 @@ using UnityEngine;
 
 public class PlayerRoot : MonoBehaviour
 {
-    [Header("Player Config")] 
+    [Header("Player Config")]
     [SerializeField] private PlayerView _playerView;
+    [SerializeField] private PlayerAudio _playerAudio;
     [SerializeField] private float _force = 5f;
 
     private PlayerPresenter _playerPresenter;
@@ -14,6 +15,18 @@ public class PlayerRoot : MonoBehaviour
     {
         _playerModel = new PlayerModel(_force);
         _playerPresenter = new PlayerPresenter(_playerView, _playerModel);
+    }
+
+    private void Update()
+    {
+        if (_playerView.VelocityMagnitude > 0)
+        {
+            _playerAudio.PlayMove(_playerView.VelocityMagnitude);
+        }
+        else
+        {
+            _playerAudio.StopMove();
+        }
     }
 
     private void FixedUpdate()
