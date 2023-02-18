@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
 
@@ -23,7 +24,8 @@ namespace Services
             
             gameObject.SetActive(true);
         }
-
+        
+        [CanBeNull]
         public CoinView GetClosest(Vector3 point)
         {
             var minDistance = Mathf.Infinity;

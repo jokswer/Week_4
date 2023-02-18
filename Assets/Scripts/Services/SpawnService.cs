@@ -7,14 +7,14 @@ namespace Services
     public class SpawnService : MonoBehaviour
     {
         [SerializeField] private CoinService _coinService;
-        
+
         [SerializeField] private Transform _creationZone;
 
         [SerializeField] private CoinView _coinPrefab;
         [SerializeField] private int _coinsCount;
 
         private const float BorderLimit = 0.5f;
-        
+
         private void Awake()
         {
             var coinsList = new List<CoinView>();
@@ -25,7 +25,7 @@ namespace Services
                 var coin = Instantiate(_coinPrefab, position, Quaternion.identity, transform);
                 coinsList.Add(coin);
             }
-            
+
             _coinService.Init(coinsList);
         }
 
